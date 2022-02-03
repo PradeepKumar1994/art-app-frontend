@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import './Navbar.css';
@@ -18,6 +18,8 @@ function Navbar(){
 		}
 	};
 
+	useEffect(() => {showButton();}, []);
+	
 	window.addEventListener('resize',showButton);
 
 	return(
@@ -32,36 +34,26 @@ function Navbar(){
 						</div>
 						<ul className={click ? 'nav-menu active' : 'nav-menu'}>
 							<li className='nav-item'>
-								<Link to='/home' className='nav-links' onClick={closeMobileMenu}>
-									Home
-								</Link>
+								<Link to='/home' className='nav-links' onClick={closeMobileMenu}>Home</Link>
 							</li>
 							<li className='nav-item'>
-								<Link to='/gallery' className='nav-links' onClick={closeMobileMenu}>
-									Gallery
-								</Link>
+								<Link to='/gallery' className='nav-links' onClick={closeMobileMenu}>Gallery</Link>
 							</li>
 							<li className='nav-item'>
-								<Link to='/shop-with-us' className='nav-links' onClick={closeMobileMenu}>
-									Shop
-								</Link>
+								<Link to='/shop-with-us' className='nav-links' onClick={closeMobileMenu}>Shop</Link>
 							</li>
 							<li className='nav-item'>
-								<Link to='/subscribe' className='nav-links' onClick={closeMobileMenu}>
-									Subscribe
-								</Link>
+								<Link to='/about-me' className='nav-links' onClick={closeMobileMenu}>About Me</Link>
 							</li>
 							<li className='nav-item'>
-								<Link to='/contact-us' className='nav-links' onClick={closeMobileMenu}>
-									Contact us
-								</Link>
+								<Link to='/contact-us' className='nav-links' onClick={closeMobileMenu}>Contact us</Link>
 							</li>
 						</ul>
 						{button && <Button buttonStyle='btn--outline'>Subcribe</Button>}
 					</div>
 				</nav>
 			</>
-		)
+		);
 }
 
-export default Navbar
+export default Navbar;
